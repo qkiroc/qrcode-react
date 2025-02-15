@@ -1,46 +1,48 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {generatePath, generateQRCode} from './utils/helper';
 import type {QRCodeProps} from './types';
+import useQrCode from './hooks/useQrCode';
 
 function QRCodeSvg(props: QRCodeProps) {
+  const {value, config, styleConfig, logoConfig} = props;
   const {
-    value,
     size = 200,
-    eyeType,
-    eyeBorderSize,
-    pointType,
-    pointSizeRandom,
-    pointSize
-  } = props;
-  const [path, setPath] = React.useState<string>('');
-  useEffect(() => {
-    if (value) {
-      const modules = generateQRCode(value);
-      const path = generatePath({
-        modules,
-        size,
-        eyeType,
-        eyeBorderSize,
-        pointType,
-        pointSizeRandom,
-        pointSize
-      });
-      setPath(path);
-    }
-  }, [
-    value,
-    size,
-    eyeType,
-    eyeBorderSize,
-    pointType,
-    pointSize,
-    pointSizeRandom
-  ]);
+    color = '#000',
+    bgColor = '#fff',
+    eyeBorderColor,
+    eyeInnerColor
+  } = styleConfig || {};
+  const {
+    src,
+    width = size / 5,
+    height = size / 5,
+    x = size / 2 - width / 2,
+    y = size / 2 - height / 2
+  } = logoConfig || {};
+
+  const path = useQrCode({config, styleConfig, value});
 
   return (
     <div>
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-        <path d={path} />
+      <svg
+        width={size}
+        height={size}
+        viewBox={`0 0 ${size} ${size}`}
+        style={{
+          backgroundColor: bgColor
+        }}
+      >
+        <g fill={color}>
+          <path fill={eyeBorderColor || color} d={path.eyeBorder} />
+          <path fill={eyeInnerColor || color} d={path.eyeInner} />
+          <path d={path.points} />
+          {src && (
+            <>
+              <rect fill={bgColor} x={x} y={y} width={width} height={height} />
+              <image href={src} width={width} height={height} x={x} y={y} />
+            </>
+          )}
+        </g>
       </svg>
     </div>
   );

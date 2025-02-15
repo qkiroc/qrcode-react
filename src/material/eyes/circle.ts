@@ -1,35 +1,26 @@
-import {getSizeAndPositions} from '../../utils/helper';
-import {
-  createCirclePath,
-  createRingPath,
-  createRoundedSquareBorderPath
-} from '../../utils/svgPath';
+import type {EyeGeneratorProps} from '../../types';
+import {createCirclePath, createRingPath} from '../../utils/svgPath';
 
-function generateCircleEyePath(
-  size: number,
-  margin: number,
-  eyeBorderSizeNumber: number
-) {
-  const {eyeBorderSize, positions} = getSizeAndPositions(size, margin);
+function generateCircleEyePath(options: EyeGeneratorProps) {
+  const {size, margin, borderSize, x, y} = options;
 
-  let path = '';
-  for (const pos of positions) {
-    // 绘制边框
-    path += createRingPath(
-      pos.x + eyeBorderSize / 2,
-      pos.y + eyeBorderSize / 2,
-      eyeBorderSize / 2,
-      margin * eyeBorderSizeNumber
-    );
-    // 绘制内部;
-    path += createCirclePath(
-      pos.x + eyeBorderSize / 2,
-      pos.y + eyeBorderSize / 2,
-      eyeBorderSize / 2 - margin * 2
-    );
-  }
+  const eyeBorder = createRingPath(
+    x + size / 2,
+    y + size / 2,
+    size / 2,
+    margin * borderSize
+  );
 
-  return path;
+  const eyeInner = createCirclePath(
+    x + size / 2,
+    y + size / 2,
+    size / 2 - margin * 2
+  );
+
+  return {
+    eyeBorder,
+    eyeInner
+  };
 }
 
 export default generateCircleEyePath;

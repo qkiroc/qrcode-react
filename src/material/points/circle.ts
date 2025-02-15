@@ -1,30 +1,14 @@
-import {isQrCodeEye} from '../../utils/helper';
+import type {PointGeneratorProps} from '../../types';
 import {createCirclePath} from '../../utils/svgPath';
 
-/**
- * 生成圆点路径
- */
-function generateCirclePointsPath(
-  modules: boolean[][],
-  margin: number,
-  pointSizeNumber: number,
-  pointSizeRandom?: boolean
-) {
+function generateCirclePointsPath(props: PointGeneratorProps) {
+  const {x, y, margin, pointSize, size} = props;
   let path = '';
-  for (let y = 0; y < modules.length; y++) {
-    for (let x = 0; x < modules.length; x++) {
-      if (modules[y][x] && !isQrCodeEye(modules, x, y)) {
-        let r = (margin / 2) * pointSizeNumber;
-        let cx = x * margin + r;
-        let cy = y * margin + r;
-        if (pointSizeRandom) {
-          r = Math.random() < 0.5 ? r : Number((r / 1.3).toFixed(2));
-        }
+  let r = (margin / 2 - size) * pointSize;
+  let cx = x * margin + (margin - r * 2) / 2 + r;
+  let cy = y * margin + (margin - r * 2) / 2 + r;
 
-        path += createCirclePath(cx, cy, r);
-      }
-    }
-  }
+  path += createCirclePath(cx, cy, r);
   return path;
 }
 

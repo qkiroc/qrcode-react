@@ -1,30 +1,20 @@
-import {getSizeAndPositions} from '../../utils/helper';
+import type {EyeGeneratorProps} from '../../types';
 import {createSquareBorderPath, createSquarePath} from '../../utils/svgPath';
 
-function generateDefaultEyePath(
-  size: number,
-  margin: number,
-  eyeBorderSizeNumber: number
-) {
-  const {eyeBorderSize, positions} = getSizeAndPositions(size, margin);
+function generateDefaultEyePath(options: EyeGeneratorProps) {
+  const {size, margin, borderSize, x, y} = options;
 
-  let path = '';
-  for (const pos of positions) {
-    // 绘制边框
-    path += createSquareBorderPath(
-      pos.x,
-      pos.y,
-      eyeBorderSize,
-      margin * eyeBorderSizeNumber
-    );
-    // 绘制内部
-    path += createSquarePath(
-      pos.x + margin * 2,
-      pos.y + margin * 2,
-      eyeBorderSize - margin * 4
-    );
-  }
-  return path;
+  const eyeBorder = createSquareBorderPath(x, y, size, margin * borderSize);
+
+  const eyeInner = createSquarePath(
+    x + margin * 2,
+    y + margin * 2,
+    size - margin * 4
+  );
+  return {
+    eyeBorder,
+    eyeInner
+  };
 }
 
 export default generateDefaultEyePath;

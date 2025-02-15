@@ -111,7 +111,7 @@ export function createRoundedSquareBorderPath(
   const yBorderSize = toFixedNumber(y + size - borderWidth);
   const xSize = toFixedNumber(x + size);
   const ySize = toFixedNumber(y + size);
-  const innerRadius = toFixedNumber(radius - 2);
+  const innerRadius = toFixedNumber(radius - borderWidth / 2);
   const xBorderInnerRadius = toFixedNumber(xBorder + innerRadius);
   const yBorderInnerRadius = toFixedNumber(yBorder + innerRadius);
   const xBorderSizeInnerRadius = toFixedNumber(xBorderSize - innerRadius);

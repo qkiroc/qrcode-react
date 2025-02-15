@@ -1,9 +1,8 @@
 import getEye from '../material/eyes';
-import generateDefaultEyePath from '../material/eyes/default';
 import getPoints from '../material/points';
-import generateDefaultPointsPath from '../material/points/default';
 import qrcodegen from '../third-party/qrcodegen';
-import {EYE_SIZE, EYE_TYPES, POINT_SIZE, POINT_TYPES} from '../types';
+import type {EYE_SIZE, EYE_TYPES, POINT_SIZE, POINT_TYPES} from '../types';
+
 const QRC = qrcodegen.QrCode;
 
 type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
@@ -43,7 +42,7 @@ export function generateQRCode(
 ) {
   const {
     level = 'L',
-    minVersion = 1,
+    minVersion = 2,
     maxVersion,
     mask,
     boostLevel
@@ -75,15 +74,15 @@ export function generateQRCode(
  * @param margin - 码眼的边距。
  * @returns 码眼的大小和位置。
  */
-export function getSizeAndPositions(size: number, margin: number) {
-  const eyeBorderSize = margin * 7;
+export function getEyeSizeAndPositions(size: number, margin: number) {
+  const eyeSize = margin * 7;
   const positions = [
     {x: 0, y: 0},
-    {x: 0, y: size - eyeBorderSize},
-    {x: size - eyeBorderSize, y: 0}
+    {x: 0, y: size - eyeSize},
+    {x: size - eyeSize, y: 0}
   ];
   return {
-    eyeBorderSize,
+    eyeSize,
     positions
   };
 }
@@ -108,7 +107,7 @@ export function isQrCodeEye(modules: boolean[][], x: number, y: number) {
  * 根据提供的二维码矩阵生成路径。
  * @param modules
  * @param size
- * @returns 返回路径
+ * @returns {points, eyeBorder, eyeInner}
  */
 export function generatePath(options: {
   modules: boolean[][];
@@ -128,29 +127,26 @@ export function generatePath(options: {
     pointSizeRandom,
     pointSize = 'default'
   } = options;
-  let path = '';
-  const margin = Number((size / modules.length).toFixed(2));
-  const pointSizeNumber = {
-    default: 1,
-    sm: 0.8,
-    xs: 0.5
-  }[pointSize];
+  const margin = toFixedNumber(size / modules.length);
 
-  const eyeBorderSizeNumber = {
-    default: 1,
-    sm: 0.8,
-    xs: 0.5
-  }[eyeBorderSize];
-
-  path += getPoints(pointType)(
+  const points = getPoints(pointType)({
     modules,
     margin,
-    pointSizeNumber,
+    pointSize,
     pointSizeRandom
-  );
-  path += getEye(eyeType)(size, margin, eyeBorderSizeNumber);
+  });
 
-  return path;
+  const {eyeBorder, eyeInner} = getEye(eyeType)({
+    margin,
+    borderSize: eyeBorderSize,
+    size
+  });
+
+  return {
+    points,
+    eyeBorder,
+    eyeInner
+  };
 }
 
 export function toFixedNumber(num: number, decimalPlaces = 2) {
