@@ -5,20 +5,20 @@ import {
 } from '../../utils/svgPath';
 
 function generateRoundedEyePath(options: EyeGeneratorProps) {
-  const {size, margin, borderSize, x, y} = options;
+  const {size, dotSize, borderSize, x, y} = options;
 
   const eyeBorder = createRoundedSquareBorderPath(
     x,
     y,
     size,
-    margin * borderSize,
-    margin
+    dotSize * borderSize,
+    dotSize
   );
 
   const eyeInner = createCirclePath(
     x + size / 2,
     y + size / 2,
-    size / 2 - margin * 2
+    size / 2 - dotSize * 2
   );
 
   return {

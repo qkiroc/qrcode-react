@@ -1,5 +1,4 @@
 import React from 'react';
-import {generatePath, generateQRCode} from './utils/helper';
 import type {QRCodeProps} from './types';
 import useQrCode from './hooks/useQrCode';
 
@@ -7,6 +6,7 @@ function QRCodeSvg(props: QRCodeProps) {
   const {value, config, styleConfig, logoConfig} = props;
   const {
     size = 200,
+    margin = 0,
     color = '#000',
     bgColor = '#fff',
     eyeBorderColor,
@@ -27,12 +27,12 @@ function QRCodeSvg(props: QRCodeProps) {
       <svg
         width={size}
         height={size}
-        viewBox={`0 0 ${size} ${size}`}
+        viewBox={`0 0 ${size + margin} ${size + margin}`}
         style={{
           backgroundColor: bgColor
         }}
       >
-        <g fill={color}>
+        <g fill={color} transform={`translate(${margin / 2}, ${margin / 2})`}>
           <path fill={eyeBorderColor || color} d={path.eyeBorder} />
           <path fill={eyeInnerColor || color} d={path.eyeInner} />
           <path d={path.points} />

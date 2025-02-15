@@ -15,7 +15,7 @@ function factory(generator: (props: PointGeneratorProps) => string) {
     xs: 0.5
   };
   return (options: PointFactoryProps) => {
-    const {modules, margin, pointSize, pointSizeRandom} = options;
+    const {modules, dotSize, pointSize, pointSizeRandom} = options;
     let path = '';
 
     for (let y = 0; y < modules.length; y++) {
@@ -23,12 +23,12 @@ function factory(generator: (props: PointGeneratorProps) => string) {
         if (modules[y][x] && !isQrCodeEye(modules, x, y)) {
           let size = 0;
           if (pointSizeRandom) {
-            size = Math.random() < 0.5 ? 0 : Number((margin / 8).toFixed(2));
+            size = Math.random() < 0.5 ? 0 : Number((dotSize / 8).toFixed(2));
           }
           path += generator({
             x,
             y,
-            margin,
+            dotSize,
             pointSize: pointSizeMap[pointSize],
             size
           });

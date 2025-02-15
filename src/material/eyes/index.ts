@@ -19,15 +19,15 @@ function factory(
     xs: 0.5
   };
   return (options: EyeFactoryProps) => {
-    const {size, margin, borderSize} = options;
-    const {eyeSize, positions} = getEyeSizeAndPositions(size, margin);
+    const {size, dotSize, borderSize} = options;
+    const {eyeSize, positions} = getEyeSizeAndPositions(size, dotSize);
     let eyeBorder = '';
     let eyeInner = '';
 
     for (const pos of positions) {
       const {eyeBorder: border, eyeInner: inner} = generator({
         size: eyeSize,
-        margin,
+        dotSize,
         borderSize: eyeBorderSizeMap[borderSize],
         x: pos.x,
         y: pos.y

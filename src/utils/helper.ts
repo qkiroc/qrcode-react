@@ -127,17 +127,17 @@ export function generatePath(options: {
     pointSizeRandom,
     pointSize = 'default'
   } = options;
-  const margin = toFixedNumber(size / modules.length);
+  const dotSize = toFixedNumber(size / modules.length);
 
   const points = getPoints(pointType)({
     modules,
-    margin,
+    dotSize,
     pointSize,
     pointSizeRandom
   });
 
   const {eyeBorder, eyeInner} = getEye(eyeType)({
-    margin,
+    dotSize,
     borderSize: eyeBorderSize,
     size
   });

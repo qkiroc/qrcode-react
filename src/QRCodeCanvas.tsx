@@ -81,6 +81,33 @@ function drawCanvasByPath(options: {
   drawLogo({ctx, size, bgColor, logoConfig});
 }
 
+function drawMargin(
+  ctx: CanvasRenderingContext2D,
+  canvas: HTMLCanvasElement,
+  margin: number
+) {
+  const scale = (canvas.width - 2 * margin) / canvas.width;
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const offscreenCanvas = document.createElement('canvas');
+  offscreenCanvas.width = canvas.width;
+  offscreenCanvas.height = canvas.height;
+  const offscreenCtx = offscreenCanvas.getContext('2d');
+  offscreenCtx!.putImageData(imageData, 0, 0);
+  ctx.drawImage(
+    offscreenCanvas,
+    0,
+    0,
+    canvas.width,
+    canvas.height,
+    margin,
+    margin,
+    canvas.width * scale,
+    canvas.height * scale
+  );
+}
+
 function QRCodeCanvas(props: QRCodeProps) {
   const {value, config, styleConfig, logoConfig} = props;
   const {size = 200} = styleConfig || {};
@@ -91,6 +118,9 @@ function QRCodeCanvas(props: QRCodeProps) {
     if (path && canvasRef.current) {
       const ctx = canvasRef.current.getContext('2d')!;
       drawCanvasByPath({ctx, path, styleConfig, logoConfig, size});
+      if (styleConfig?.margin) {
+        drawMargin(ctx, canvasRef.current, styleConfig.margin);
+      }
     }
   }, [path, logoConfig, styleConfig]);
 

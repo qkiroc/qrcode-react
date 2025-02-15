@@ -9,7 +9,7 @@ export type EYE_SIZE = 'xs' | 'sm' | 'default';
 
 export interface EyeGeneratorProps {
   size: number;
-  margin: number;
+  dotSize: number;
   borderSize: number;
   x: number;
   y: number;
@@ -17,21 +17,21 @@ export interface EyeGeneratorProps {
 
 export interface EyeFactoryProps {
   size: number;
-  margin: number;
+  dotSize: number;
   borderSize: EYE_SIZE;
 }
 
 export interface PointGeneratorProps {
   x: number;
   y: number;
-  margin: number;
+  dotSize: number;
   pointSize: number;
   size: number;
 }
 
 export interface PointFactoryProps {
   modules: boolean[][];
-  margin: number;
+  dotSize: number;
   pointSize: POINT_SIZE;
   pointSizeRandom?: boolean;
 }
@@ -44,6 +44,7 @@ export interface PathProps {
 
 interface QRCodeStyleConfig {
   size?: number;
+  margin?: number;
   eyeType?: EYE_TYPES;
   eyeBorderSize?: EYE_SIZE;
   pointType?: POINT_TYPES;

@@ -16,6 +16,7 @@ const initialState: QRCodeProps = {
   },
   styleConfig: {
     size: 200,
+    margin: 0,
     pointType: 'default',
     pointSize: 'default',
     pointSizeRandom: false,
@@ -296,6 +297,20 @@ const App: React.FC = () => {
           <option value="sm">小</option>
           <option value="xs">最小</option>
         </select>
+      </div>
+      <div>
+        <label>码边距</label>
+        <input
+          type="number"
+          value={styleConfig?.margin}
+          min="0"
+          onChange={e =>
+            dispatch({
+              type: 'styleConfig.margin',
+              payload: Number(e.target.value)
+            })
+          }
+        />
       </div>
       <div>
         <label>Logo</label>

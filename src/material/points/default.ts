@@ -2,12 +2,12 @@ import type {PointGeneratorProps} from '../../types';
 import {createSquarePath} from '../../utils/svgPath';
 
 function generateDefaultPointsPath(props: PointGeneratorProps) {
-  const {x, y, margin, pointSize, size} = props;
+  const {x, y, dotSize, pointSize, size} = props;
   let path = '';
-  const width = (margin - size * 2) * pointSize;
+  const width = (dotSize - size * 2) * pointSize;
   path += createSquarePath(
-    x * margin + (margin - width) / 2,
-    y * margin + (margin - width) / 2,
+    x * dotSize + (dotSize - width) / 2,
+    y * dotSize + (dotSize - width) / 2,
     width
   );
   return path;
