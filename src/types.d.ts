@@ -1,6 +1,12 @@
 import {eyeMap} from './material/eyes';
 import {pointsMap} from './material/points';
 
+type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
+
+type ERROR_LEVEL_TYPE = {
+  [index in ErrorCorrectionLevel]: qrcodegen.QrCode.Ecc;
+};
+
 export type EYE_TYPES = keyof typeof eyeMap;
 export type POINT_TYPES = keyof typeof pointsMap;
 

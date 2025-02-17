@@ -11,5 +11,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/", "examples/**/*.tsx"]
+  "include": ["src/", "examples/**/*.tsx", "types.d.ts"]
 }

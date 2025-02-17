@@ -1,15 +1,16 @@
 import getEye from '../material/eyes';
 import getPoints from '../material/points';
 import qrcodegen from '../third-party/qrcodegen';
-import type {EYE_SIZE, EYE_TYPES, POINT_SIZE, POINT_TYPES} from '../types';
+import type {
+  ERROR_LEVEL_TYPE,
+  ErrorCorrectionLevel,
+  EYE_SIZE,
+  EYE_TYPES,
+  POINT_SIZE,
+  POINT_TYPES
+} from '../types';
 
 const QRC = qrcodegen.QrCode;
-
-type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
-
-type ERROR_LEVEL_TYPE = {
-  [index in ErrorCorrectionLevel]: qrcodegen.QrCode.Ecc;
-};
 
 const ERROR_LEVEL_MAP: ERROR_LEVEL_TYPE = {
   L: qrcodegen.QrCode.Ecc.LOW,

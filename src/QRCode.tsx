@@ -1,7 +1,7 @@
 import React from 'react';
 import QRCodeSvg from './QRCodeSvg';
 import QRCodeCanvas from './QRCodeCanvas';
-import {QRCodeProps} from './types';
+import type {QRCodeProps} from './types';
 
 function QRCode(props: QRCodeProps) {
   const {mode = 'canvas'} = props;

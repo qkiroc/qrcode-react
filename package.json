@@ -1,11 +1,19 @@
 {
-  "name": "qrcode-react",
-  "version": "1.0.0",
+  "name": "qrcode-react-next",
+  "version": "0.0.1",
   "main": "index.js",
+  "lib": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "file": [
+    "es",
+    "lib"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "p-dist": "npm run build && gh-pages -d dist"
+    "build": "vite build --mode lib && cp src/types.d.ts lib/types.d.ts && cp src/types.d.ts es/types.d.ts",
+    "build:demo": "vite build",
+    "p-dist": "npm run build:demo && gh-pages -d dist "
   },
   "author": "qhy",
   "license": "ISC",
@@ -14,13 +22,15 @@
     "react": "^18.3.1"
   },
   "devDependencies": {
+    "@types/node": "^22.13.4",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "jsqr": "^1.4.0",
     "prettier": "^2.3.2",
+    "react-dom": "^18.3.1",
     "typescript": "~5.6.2",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "vite-plugin-dts": "^4.5.0"
   }
 }
