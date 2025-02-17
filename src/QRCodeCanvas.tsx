@@ -83,7 +83,7 @@ function drawCanvasByPath(options: {
 }
 
 function QRCodeCanvas(props: QRCodeProps) {
-  const {value, config, styleConfig, logoConfig} = props;
+  const {value, config, styleConfig, logoConfig, className} = props;
   const {size = 200, bgColor} = styleConfig || {};
   const {path, logo} = useQrCode({config, styleConfig, logoConfig, value});
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -101,7 +101,7 @@ function QRCodeCanvas(props: QRCodeProps) {
       width={size}
       height={size}
       ref={canvasRef}
-      className="qr-canvas"
+      className={'qr-container qr-canvas' + (className ? ` ${className}` : '')}
     ></canvas>
   );
 }

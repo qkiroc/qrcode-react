@@ -3,7 +3,7 @@ import type {QRCodeProps} from './types';
 import useQrCode from './hooks/useQrCode';
 
 function QRCodeSvg(props: QRCodeProps) {
-  const {value, config, styleConfig, logoConfig} = props;
+  const {value, config, styleConfig, logoConfig, className} = props;
   const {
     size = 200,
     margin = 0,
@@ -24,7 +24,7 @@ function QRCodeSvg(props: QRCodeProps) {
       style={{
         backgroundColor: bgColor
       }}
-      className="qr-svg"
+      className={'qr-container qr-svg' + (className ? ` ${className}` : '')}
     >
       <g fill={color}>
         <path fill={eyeBorderColor || color} d={path.eyeBorder} />

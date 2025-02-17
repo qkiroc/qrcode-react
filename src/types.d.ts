@@ -81,6 +81,7 @@ export interface QRCodeProps {
   config?: QRCodeConfig;
   styleConfig?: QRCodeStyleConfig;
   logoConfig?: QrCodeLogoConfig;
+  className?: string;
 }
 
 export type Modules = boolean[][];
