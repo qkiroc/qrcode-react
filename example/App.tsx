@@ -3,6 +3,7 @@ import '../src/index';
 import QRCode from '../src/index';
 import type {QRCodeProps} from '../src/types';
 import InputImage from './components/InputImage';
+import {Validate} from './Validate';
 
 const initialState: QRCodeProps = {
   value: 'test',
@@ -367,6 +368,12 @@ const App: React.FC = () => {
       <QRCode
         value={value}
         mode={mode}
+        styleConfig={styleConfig}
+        config={config}
+        logoConfig={logoConfig}
+      />
+      <Validate
+        value={value}
         styleConfig={styleConfig}
         config={config}
         logoConfig={logoConfig}

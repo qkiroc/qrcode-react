@@ -96,7 +96,14 @@ function QRCodeCanvas(props: QRCodeProps) {
     }
   }, [path, logoConfig, styleConfig]);
 
-  return <canvas width={size} height={size} ref={canvasRef}></canvas>;
+  return (
+    <canvas
+      width={size}
+      height={size}
+      ref={canvasRef}
+      className="qr-canvas"
+    ></canvas>
+  );
 }
 
 export default QRCodeCanvas;

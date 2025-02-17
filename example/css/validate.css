@@ -1,0 +1,9 @@
+.validate .qr-canvas {
+  display: none;
+}
+
+.validate .validate-error {
+  color: #f00;
+  font-size: 12px;
+  margin-top: 5px;
+}
