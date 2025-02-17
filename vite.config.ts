@@ -9,5 +9,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist'
-  }
+  },
+  base: '/qrcode-react/'
 });

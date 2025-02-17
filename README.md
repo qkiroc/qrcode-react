@@ -2,6 +2,8 @@
 
 一款基于 react 的二维码生成器
 
+demo 试用地址：https://qkiroc.github.io/qrcode-react/
+
 # 安装
 
 ```bash
