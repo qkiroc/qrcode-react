@@ -50,7 +50,7 @@ function component() {
 | color           | string                            | '#000000' | 否       | 二维码的颜色       |
 | bgColor         | string                            | '#FFFFFF' | 否       | 二维码的背景颜色   |
 | eyeType         | 'default'\| 'rounded' \| 'circle' | 'default' | 否       | 码眼的类型         |
-| eyeBorderSize   | 'default' \| 'sm' \| 'xs'         | 'default' | 否       | 码眼边框的大小（） |
+| eyeBorderSize   | 'default' \| 'sm' \| 'xs'         | 'default' | 否       | 码眼边框的大小 |
 | eyeBorderColor  | string                            | -         | 否       | 码眼边框的颜色     |
 | eyeInnerColor   | string                            | -         | 否       | 码眼内部的颜色     |
 | pointType       | 'default' \| 'circle'             | 'default' | 否       | 码点的类型         |
