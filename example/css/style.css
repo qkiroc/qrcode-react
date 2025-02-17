@@ -1,7 +1,17 @@
+body {
+  margin: 0;
+}
+.app-title {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+}
 label {
   font-size: 14px;
   width: 140px;
   display: inline-block;
+  padding-left: 10px;
 }
 .form-item {
   margin-bottom: 16px;
@@ -36,13 +46,10 @@ input[type='checkbox'] {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 20px;
+  margin-top: 10px;
+  padding-top: 10px;
 }
-.app-title {
-  font-size: 20px;
-  font-weight: 600;
-  padding: 16px;
-  border-bottom: 1px solid #ccc;
-}
+
 .container {
   display: flex;
   height: calc(100vh - 61px);
@@ -52,6 +59,19 @@ input[type='checkbox'] {
   width: 50%;
   padding: 16px;
 }
+
+.container .container-left::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.container .container-left::-webkit-scrollbar:vertical {
+  width: 6px;
+}
+
+.container .container-left::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgb(227, 227, 227);
+}
 .container .container-right {
   flex: 1;
   display: flex;
@@ -59,9 +79,7 @@ input[type='checkbox'] {
   justify-content: center;
   background-color: #fafafa;
 }
-body {
-  margin: 0;
-}
+
 .container .container-right-inner {
   display: flex;
   flex-direction: column;

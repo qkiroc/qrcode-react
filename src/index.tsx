@@ -1,15 +1,5 @@
-import React from 'react';
-import QRCodeSvg from './QRCodeSvg';
+import QRCode from './QRCode';
 import QRCodeCanvas from './QRCodeCanvas';
-import {QRCodeProps} from './types';
+import QRCodeSvg from './QRCodeSvg';
 
-function QRCode(props: QRCodeProps) {
-  const {mode = 'canvas'} = props;
-  return mode === 'svg' ? (
-    <QRCodeSvg {...props} />
-  ) : (
-    <QRCodeCanvas {...props} />
-  );
-}
-
-export default QRCode;
+export {QRCode, QRCodeCanvas, QRCodeSvg};

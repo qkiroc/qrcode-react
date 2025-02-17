@@ -1,7 +1,7 @@
 import jsQR from 'jsqr';
 import {QRCodeProps} from '../src/types';
 import React, {useEffect} from 'react';
-import QRCode from '../src';
+import QRCode from '../src/QRCode';
 import './css/validate.css';
 
 export function Validate(props: QRCodeProps) {

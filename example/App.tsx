@@ -1,6 +1,6 @@
 import React from 'react';
-import '../src/index';
-import QRCode from '../src/index';
+import '../src/QRCode';
+import {QRCode} from '../src/index';
 import type {QRCodeProps} from '../src/types';
 import InputImage from './components/InputImage';
 import {Validate} from './Validate';
