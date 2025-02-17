@@ -7,13 +7,13 @@ demo 试用地址：https://qkiroc.github.io/qrcode-react/
 # 安装
 
 ```bash
-npm install qrcode-react
+npm install qrcode-react-next
 ```
 
 # 使用示例
 
 ```js
-import {QRCode} from 'qrcode-react';
+import {QRCode} from 'qrcode-react-next';
 
 function component() {
   return <QRCode value="test" />;
@@ -24,12 +24,12 @@ function component() {
 
 | 参数        | 类型              | 默认值 | 是否必填 | 说明                                         |
 | ----------- | ----------------- | ------ | -------- | -------------------------------------------- |
-| value       | string            | -      | 是       | 二维码的内容                                 |
-| mode        | 'svg' \| 'canvas' | 'svg'  | 否       | 二维码的渲染模式                             |
-| config      | QRCodeConfig      | {}     | 否       | 二维码的配置，包括纠错级别、版本等           |
-| styleConfig | QRCodeStyleConfig | {}     | 否       | 二维码的样式配置，包括大小、颜色、边距等     |
-| logoConfig  | QrCodeLogoConfig  | {}     | 否       | 二维码中间的 logo 配置，包括图片路径、宽高等 |
-| className   | string            | -      | 否       | 自定义样式类名                               |
+| value       | string            | -       | 是       | 二维码的内容                                 |
+| mode        | 'svg' \| 'canvas' | 'canvas'| 否       | 二维码的渲染模式                             |
+| config      | QRCodeConfig      | -       | 否       | 二维码的配置，包括纠错级别、版本等           |
+| styleConfig | QRCodeStyleConfig | -       | 否       | 二维码的样式配置，包括大小、颜色、边距等     |
+| logoConfig  | QrCodeLogoConfig  | -       | 否       | 二维码中间的 logo 配置，包括图片路径、宽高等 |
+| className   | string            | -       | 否       | 自定义样式类名                               |
 
 ## QRCodeConfig 配置说明
 
