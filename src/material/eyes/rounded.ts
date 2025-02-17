@@ -12,7 +12,7 @@ function generateRoundedEyePath(options: EyeGeneratorProps) {
     y,
     size,
     dotSize * borderSize,
-    dotSize
+    dotSize * 2
   );
 
   const eyeInner = createCirclePath(

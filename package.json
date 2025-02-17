@@ -1,13 +1,17 @@
 {
   "name": "qrcode-react-next",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "index.js",
   "lib": "lib/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "file": [
+  "files": [
     "es",
     "lib"
+  ],
+  "keywords": [
+    "qrcode",
+    "react"
   ],
   "scripts": {
     "dev": "vite",

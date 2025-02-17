@@ -122,7 +122,7 @@ export function generatePath(options: {
   eyeType?: EYE_TYPES;
   eyeBorderSize?: EYE_SIZE;
   pointType?: POINT_TYPES;
-  pointSizeRandom?: boolean;
+  customSize: number[][];
   pointSize?: POINT_SIZE;
 }) {
   const {
@@ -133,7 +133,7 @@ export function generatePath(options: {
     eyeType = 'default',
     eyeBorderSize = 'default',
     pointType = 'default',
-    pointSizeRandom,
+    customSize,
     pointSize = 'default'
   } = options;
 
@@ -142,7 +142,7 @@ export function generatePath(options: {
     modules,
     dotSize,
     pointSize,
-    pointSizeRandom
+    customSize
   });
 
   const {eyeBorder, eyeInner} = getEye(eyeType)({

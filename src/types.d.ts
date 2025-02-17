@@ -32,8 +32,7 @@ export interface PointGeneratorProps {
   x: number;
   y: number;
   dotSize: number;
-  pointSize: number;
-  size: number;
+  dotScale: number;
   margin: number;
 }
 
@@ -42,7 +41,7 @@ export interface PointFactoryProps {
   modules: boolean[][];
   dotSize: number;
   pointSize: POINT_SIZE;
-  pointSizeRandom?: boolean;
+  customSize: number[][];
 }
 
 export interface PathProps {

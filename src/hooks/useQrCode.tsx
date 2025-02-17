@@ -28,6 +28,21 @@ export default function useQrCode(props: {
     [modules, size, margin]
   );
 
+  const customSize = React.useMemo(() => {
+    let customSize: number[][] = [];
+    for (let i = 0; i < modules.length; i++) {
+      customSize.push([]);
+      for (let j = 0; j < modules.length; j++) {
+        if (pointSizeRandom) {
+          customSize[i].push(Math.random() < 0.5 ? 1 : 0.8);
+        } else {
+          customSize[i].push(1);
+        }
+      }
+    }
+    return customSize;
+  }, [modules, pointSizeRandom]);
+
   const path = React.useMemo(
     () =>
       generatePath({
@@ -39,7 +54,7 @@ export default function useQrCode(props: {
         eyeBorderSize,
         pointType,
         pointSize,
-        pointSizeRandom
+        customSize
       }),
     [modules, dotSize, styleConfig]
   );
