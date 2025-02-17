@@ -46,7 +46,7 @@ export default defineConfig(({command, mode}) => {
     };
   } else {
     return {
-      base: '/qcode-react/',
+      base: '/qrcode-react/',
       build: {
         outDir: 'dist'
       },
