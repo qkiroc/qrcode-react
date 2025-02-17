@@ -7,13 +7,13 @@ demo 试用地址：https://qkiroc.github.io/qrcode-react/
 # 安装
 
 ```bash
-npm install qrcode-react
+npm install qrcode-react-next
 ```
 
 # 使用示例
 
 ```js
-import {QRCode} from 'qrcode-react';
+import {QRCode} from 'qrcode-react-next';
 
 function component() {
   return <QRCode value="test" />;
@@ -24,12 +24,12 @@ function component() {
 
 | 参数        | 类型              | 默认值 | 是否必填 | 说明                                         |
 | ----------- | ----------------- | ------ | -------- | -------------------------------------------- |
-| value       | string            | -      | 是       | 二维码的内容                                 |
-| mode        | 'svg' \| 'canvas' | 'svg'  | 否       | 二维码的渲染模式                             |
-| config      | QRCodeConfig      | {}     | 否       | 二维码的配置，包括纠错级别、版本等           |
-| styleConfig | QRCodeStyleConfig | {}     | 否       | 二维码的样式配置，包括大小、颜色、边距等     |
-| logoConfig  | QrCodeLogoConfig  | {}     | 否       | 二维码中间的 logo 配置，包括图片路径、宽高等 |
-| className   | string            | -      | 否       | 自定义样式类名                               |
+| value       | string            | -       | 是       | 二维码的内容                                 |
+| mode        | 'svg' \| 'canvas' | 'canvas'| 否       | 二维码的渲染模式                             |
+| config      | QRCodeConfig      | -       | 否       | 二维码的配置，包括纠错级别、版本等           |
+| styleConfig | QRCodeStyleConfig | -       | 否       | 二维码的样式配置，包括大小、颜色、边距等     |
+| logoConfig  | QrCodeLogoConfig  | -       | 否       | 二维码中间的 logo 配置，包括图片路径、宽高等 |
+| className   | string            | -       | 否       | 自定义样式类名                               |
 
 ## QRCodeConfig 配置说明
 
@@ -50,7 +50,7 @@ function component() {
 | color           | string                            | '#000000' | 否       | 二维码的颜色       |
 | bgColor         | string                            | '#FFFFFF' | 否       | 二维码的背景颜色   |
 | eyeType         | 'default'\| 'rounded' \| 'circle' | 'default' | 否       | 码眼的类型         |
-| eyeBorderSize   | 'default' \| 'sm' \| 'xs'         | 'default' | 否       | 码眼边框的大小（） |
+| eyeBorderSize   | 'default' \| 'sm' \| 'xs'         | 'default' | 否       | 码眼边框的大小 |
 | eyeBorderColor  | string                            | -         | 否       | 码眼边框的颜色     |
 | eyeInnerColor   | string                            | -         | 否       | 码眼内部的颜色     |
 | pointType       | 'default' \| 'circle'             | 'default' | 否       | 码点的类型         |
