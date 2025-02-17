@@ -6,7 +6,7 @@ import InputImage from './components/InputImage';
 import {Validate} from './Validate';
 
 const initialState: QRCodeProps = {
-  value: 'test',
+  value: 'https://qkiroc.github.io/qrcode-react/',
   mode: 'svg',
   config: {
     level: 'L',
