@@ -12,15 +12,9 @@ function QRCodeSvg(props: QRCodeProps) {
     eyeBorderColor,
     eyeInnerColor
   } = styleConfig || {};
-  const {
-    src,
-    width = size / 5,
-    height = size / 5,
-    x = size / 2 - width / 2,
-    y = size / 2 - height / 2
-  } = logoConfig || {};
 
-  const path = useQrCode({config, styleConfig, value});
+  const {path, logo} = useQrCode({config, styleConfig, logoConfig, value});
+  const {src, x, y, width, height, bg} = logo || {};
 
   return (
     <div>
@@ -38,7 +32,13 @@ function QRCodeSvg(props: QRCodeProps) {
           <path d={path.points} />
           {src && (
             <>
-              <rect fill={bgColor} x={x} y={y} width={width} height={height} />
+              <rect
+                fill={bgColor}
+                x={bg?.x}
+                y={bg?.y}
+                width={bg?.width}
+                height={bg?.height}
+              />
               <image href={src} width={width} height={height} x={x} y={y} />
             </>
           )}

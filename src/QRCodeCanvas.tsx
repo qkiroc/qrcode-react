@@ -4,22 +4,26 @@ import useQrCode from './hooks/useQrCode';
 
 function drawLogo({
   ctx,
-  size,
-  bgColor,
-  logoConfig
+  bgColor = '#fff',
+  logo
 }: {
   ctx: CanvasRenderingContext2D;
-  size: number;
-  bgColor: string;
-  logoConfig: QRCodeProps['logoConfig'];
+  bgColor?: string;
+  logo: {
+    src: string;
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+    bg: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    };
+  };
 }) {
-  const {
-    src,
-    width = size / 5,
-    height = size / 5,
-    x = size / 2 - width / 2,
-    y = size / 2 - height / 2
-  } = logoConfig || {};
+  const {src, width, height, x, y, bg} = logo || {};
   if (!src) {
     return;
   }
@@ -27,7 +31,7 @@ function drawLogo({
   image.src = src;
   image.onload = () => {
     ctx.fillStyle = bgColor;
-    ctx.fillRect(x, y, width, height);
+    ctx.fillRect(bg.x, bg.y, bg.width, bg.height);
     const aspectRatio = image.width / image.height;
     let drawWidth = width;
     let drawHeight = height;
@@ -55,10 +59,9 @@ function drawCanvasByPath(options: {
   ctx: CanvasRenderingContext2D;
   path: any;
   styleConfig: QRCodeProps['styleConfig'];
-  logoConfig: QRCodeProps['logoConfig'];
   size: number;
 }) {
-  const {ctx, path, styleConfig, logoConfig, size} = options;
+  const {ctx, path, styleConfig} = options;
   const {
     color = '#000',
     bgColor = '#fff',
@@ -77,20 +80,19 @@ function drawCanvasByPath(options: {
   ctx.fill(new Path2D(path.eyeInner));
   ctx.fillStyle = color;
   ctx.fill(new Path2D(path.points));
-
-  drawLogo({ctx, size, bgColor, logoConfig});
 }
 
 function QRCodeCanvas(props: QRCodeProps) {
   const {value, config, styleConfig, logoConfig} = props;
-  const {size = 200} = styleConfig || {};
-  const path = useQrCode({config, styleConfig, value});
+  const {size = 200, bgColor} = styleConfig || {};
+  const {path, logo} = useQrCode({config, styleConfig, logoConfig, value});
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (path && canvasRef.current) {
       const ctx = canvasRef.current.getContext('2d')!;
-      drawCanvasByPath({ctx, path, styleConfig, logoConfig, size});
+      drawCanvasByPath({ctx, path, styleConfig, size});
+      logo && drawLogo({ctx, bgColor, logo});
     }
   }, [path, logoConfig, styleConfig]);
 

@@ -318,6 +318,52 @@ const App: React.FC = () => {
           onChange={image => dispatch({type: 'logoConfig.src', payload: image})}
         />
       </div>
+      <div>
+        <label>Logo x</label>
+        <input
+          type="number"
+          value={logoConfig?.x}
+          onChange={e =>
+            dispatch({type: 'logoConfig.x', payload: Number(e.target.value)})
+          }
+        />
+      </div>
+      <div>
+        <label>Logo y</label>
+        <input
+          type="number"
+          value={logoConfig?.y}
+          onChange={e =>
+            dispatch({type: 'logoConfig.y', payload: Number(e.target.value)})
+          }
+        />
+      </div>
+      <div>
+        <label>Logo 宽度</label>
+        <input
+          type="number"
+          value={logoConfig?.width}
+          onChange={e =>
+            dispatch({
+              type: 'logoConfig.width',
+              payload: Number(e.target.value)
+            })
+          }
+        />
+      </div>
+      <div>
+        <label>Logo 高度</label>
+        <input
+          type="number"
+          value={logoConfig?.height}
+          onChange={e =>
+            dispatch({
+              type: 'logoConfig.height',
+              payload: Number(e.target.value)
+            })
+          }
+        />
+      </div>
       <QRCode
         value={value}
         mode={mode}

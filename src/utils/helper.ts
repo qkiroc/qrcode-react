@@ -116,6 +116,7 @@ export function isQrCodeEye(modules: boolean[][], x: number, y: number) {
 export function generatePath(options: {
   modules: boolean[][];
   size: number;
+  dotSize: number;
   margin?: number;
   eyeType?: EYE_TYPES;
   eyeBorderSize?: EYE_SIZE;
@@ -126,6 +127,7 @@ export function generatePath(options: {
   const {
     modules,
     size,
+    dotSize,
     margin = 0,
     eyeType = 'default',
     eyeBorderSize = 'default',
@@ -133,8 +135,6 @@ export function generatePath(options: {
     pointSizeRandom,
     pointSize = 'default'
   } = options;
-  const dotSize = toFixedNumber((size - margin * 2) / modules.length);
-  console.log('dotSize', dotSize);
 
   const points = getPoints(pointType)({
     margin,
