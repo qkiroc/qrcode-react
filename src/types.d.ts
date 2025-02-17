@@ -16,6 +16,7 @@ export interface EyeGeneratorProps {
 }
 
 export interface EyeFactoryProps {
+  margin: number;
   size: number;
   dotSize: number;
   borderSize: EYE_SIZE;
@@ -27,9 +28,11 @@ export interface PointGeneratorProps {
   dotSize: number;
   pointSize: number;
   size: number;
+  margin: number;
 }
 
 export interface PointFactoryProps {
+  margin: number;
   modules: boolean[][];
   dotSize: number;
   pointSize: POINT_SIZE;

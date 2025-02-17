@@ -10,6 +10,7 @@ export default function useQrCode(props: {
   const {config, styleConfig, value} = props;
   const {
     size = 200,
+    margin = 0,
     eyeType,
     eyeBorderSize,
     pointType,
@@ -25,6 +26,7 @@ export default function useQrCode(props: {
     () =>
       generatePath({
         modules,
+        margin,
         size,
         eyeType,
         eyeBorderSize,

@@ -27,12 +27,12 @@ function QRCodeSvg(props: QRCodeProps) {
       <svg
         width={size}
         height={size}
-        viewBox={`0 0 ${size + margin} ${size + margin}`}
+        viewBox={`0 0 ${size} ${size}`}
         style={{
           backgroundColor: bgColor
         }}
       >
-        <g fill={color} transform={`translate(${margin / 2}, ${margin / 2})`}>
+        <g fill={color}>
           <path fill={eyeBorderColor || color} d={path.eyeBorder} />
           <path fill={eyeInnerColor || color} d={path.eyeInner} />
           <path d={path.points} />

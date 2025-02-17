@@ -74,12 +74,16 @@ export function generateQRCode(
  * @param margin - 码眼的边距。
  * @returns 码眼的大小和位置。
  */
-export function getEyeSizeAndPositions(size: number, margin: number) {
-  const eyeSize = margin * 7;
+export function getEyeSizeAndPositions(
+  size: number,
+  dotSize: number,
+  margin: number
+) {
+  const eyeSize = dotSize * 7;
   const positions = [
-    {x: 0, y: 0},
-    {x: 0, y: size - eyeSize},
-    {x: size - eyeSize, y: 0}
+    {x: margin, y: margin},
+    {x: margin, y: size - eyeSize - margin},
+    {x: size - eyeSize - margin, y: margin}
   ];
   return {
     eyeSize,
@@ -112,6 +116,7 @@ export function isQrCodeEye(modules: boolean[][], x: number, y: number) {
 export function generatePath(options: {
   modules: boolean[][];
   size: number;
+  margin?: number;
   eyeType?: EYE_TYPES;
   eyeBorderSize?: EYE_SIZE;
   pointType?: POINT_TYPES;
@@ -121,15 +126,18 @@ export function generatePath(options: {
   const {
     modules,
     size,
+    margin = 0,
     eyeType = 'default',
     eyeBorderSize = 'default',
     pointType = 'default',
     pointSizeRandom,
     pointSize = 'default'
   } = options;
-  const dotSize = toFixedNumber(size / modules.length);
+  const dotSize = toFixedNumber((size - margin * 2) / modules.length);
+  console.log('dotSize', dotSize);
 
   const points = getPoints(pointType)({
+    margin,
     modules,
     dotSize,
     pointSize,
@@ -137,6 +145,7 @@ export function generatePath(options: {
   });
 
   const {eyeBorder, eyeInner} = getEye(eyeType)({
+    margin,
     dotSize,
     borderSize: eyeBorderSize,
     size

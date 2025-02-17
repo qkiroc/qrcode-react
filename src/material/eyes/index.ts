@@ -19,8 +19,8 @@ function factory(
     xs: 0.5
   };
   return (options: EyeFactoryProps) => {
-    const {size, dotSize, borderSize} = options;
-    const {eyeSize, positions} = getEyeSizeAndPositions(size, dotSize);
+    const {size, dotSize, borderSize, margin} = options;
+    const {eyeSize, positions} = getEyeSizeAndPositions(size, dotSize, margin);
     let eyeBorder = '';
     let eyeInner = '';
 

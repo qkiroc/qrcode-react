@@ -15,7 +15,7 @@ function factory(generator: (props: PointGeneratorProps) => string) {
     xs: 0.5
   };
   return (options: PointFactoryProps) => {
-    const {modules, dotSize, pointSize, pointSizeRandom} = options;
+    const {modules, dotSize, pointSize, pointSizeRandom, margin} = options;
     let path = '';
 
     for (let y = 0; y < modules.length; y++) {
@@ -30,7 +30,8 @@ function factory(generator: (props: PointGeneratorProps) => string) {
             y,
             dotSize,
             pointSize: pointSizeMap[pointSize],
-            size
+            size,
+            margin
           });
         }
       }
