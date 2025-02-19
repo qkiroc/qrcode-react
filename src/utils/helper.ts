@@ -160,7 +160,5 @@ export function generatePath(options: {
 }
 
 export function toFixedNumber(num: number, decimalPlaces = 2) {
-  return (
-    Math.round(num * Math.pow(10, decimalPlaces)) / Math.pow(10, decimalPlaces)
-  );
+  return Number(num.toFixed(decimalPlaces));
 }
